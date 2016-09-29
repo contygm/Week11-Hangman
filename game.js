@@ -30,26 +30,9 @@ var StarWars = [
 	"Hard to see the Dark Side is","Laugh it up fuzz ball"
 ]
 
+var theWord = "";
 
-var theWord = StarWars[Math.floor(Math.random() * 50)];
-
-function printWord() {
-	for (var n = 0; n < theWord.length; n++) {
-		if (/[a-zA-Z]/.test(theWord[n])){
-			spaceHolder += "_";
-		} else {
-			spaceHolder += "\u00A0";
-		}
-	}
-	document.getElementById("word").innerHTML= spaceHolder;
-};
-
-function resetWord (){
+exports.getWord = function(){
 	theWord = StarWars[Math.floor(Math.random() * 50)];
-	pastGuess = [];
-	spaceHolder = "";
-	lives = 7;
-	document.getElementById("lives").innerHTML= lives + " Errors";
-	document.getElementById("lastGuess").innerHTML= "Your last guess was: <br>";
-	document.getElementById("pastGuess").innerHTML= "You've already used these! <br>" + pastGuess;
+	console.log(theWord)
 };
