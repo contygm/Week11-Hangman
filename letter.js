@@ -19,11 +19,3 @@ exports.printWord = function(word){
 	return spaceHolder;
 };
 
-exports.checkSpaceHolder = function(alpha) {
-	for (var n = 0; n < game.theWord.length; n++) {
-		if (alpha == spaceHolder[n]){
-			return true;
-		}
-	}	
-};
-

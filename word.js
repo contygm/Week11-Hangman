@@ -3,27 +3,65 @@
 
 var game = require("./game.js");
 var letter = require("./letter.js");
-var $ = require('jQuery');
+var main = require("./main.js");
 
-var pastGuess = [];
-exports.pastGuess = pastGuess;
 
-exports.checkRepeat = function(alpha) {
-	for (var i = 0; i <= pastGuess.length; i++){
-		if (alpha == pastGuess[i]) {
+function checkRepeat(alpha) {
+	for (var i = 0; i <= main.pastGuess.length; i++){
+		if (alpha == main.pastGuess[i]) {
 			return true;
-		} 
+		}
 	}
 };
 
-exports.checkGuess = function(alpha) {
+function checkSpaceHolder (alpha) {
+	for (var n = 0; n < main.theWord.length; n++) {
+		if (alpha == main.spaceholder.toLowerCase()){
+			return true;
+		}
+	}	
+};
+
+function correctGuess(alpha) {
 	var correct = 0;
-	for (var n = 0; n < game.theWord.length; n++) {
-		if (alpha == game.theWord[n].toLowerCase()){
-			letter.spaceHolder = letter.spaceHolder.substr(0, n) + game.theWord[n] + letter.spaceHolder.substr(n+1);
+	for (var n = 0; n < main.theWord.length; n++) {
+		if (alpha == main.theWord[n].toLowerCase()){
+			main.spaceholder = main.spaceholder.substr(0, n) + main.theWord[n] + main.spaceholder.substr(n+1);
 			correct++;
 		}
 	}
-	console.log(letter.spaceHolder);
 	if (correct > 0) {return true};
+
 };
+
+exports.checkGuess = function(alpha){
+
+	// is it an alpha key?
+	if (!/[a-z]/.test(alpha)) {
+		console.log("Select an alpha key.");
+	} 
+
+	// have they guessed that already?
+	else if (checkRepeat(alpha) || checkSpaceHolder(alpha)){
+		console.log("You guessed that already! Try again.");
+	} 
+
+	// check if right
+	else if (correctGuess(alpha)) {
+		console.log("You got one!");
+		
+		// checkWin();
+	}
+
+	// wrong guess
+	else {
+		main.pastGuess.push(alpha);
+		main.lives--;
+		
+		// updateLives();
+
+		console.log("Nope! Try again!");
+		
+	}
+
+}

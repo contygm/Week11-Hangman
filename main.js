@@ -6,66 +6,47 @@ var inquirer = require('inquirer');
 
 var wins = 0;
 var lives = 7;
+var pastGuess = [];
+var theWord = game.getWord();
+var spaceholder = letter.printWord(theWord);
 
-// function hangman(event) {
-// 	var guess = String.fromCharCode(event.keyCode).toLowerCase();
+exports.pastGuess = pastGuess;
+exports.theWord = theWord;
+exports.spaceholder = spaceholder;
+exports.lives = lives;
+
+function printStats(){
 	
-// 	// is it an alpha key?
-// 	if (!/[A-Z]/.test(guess)) {
-// 		console.log("Select an alpha key.");
-// 	} 
+	console.log("");
+	console.log("STATS")
+	console.log("Lives: " + lives);
+	console.log("Past Guesses: " + pastGuess)
+	console.log("--------------")
+	console.log(spaceholder)
+	console.log("");
+}
 
-// 	// have they guessed that already?
-// 	else if (word.checkRepeat(guess)){
-// 		console.log("You guessed that already! Try again.");
-// 	} 
 
-// 	else if (letter.checkSpaceHolder(guess)) {
-// 		console.log("You got that one right already!");
-// 	}
-
-// 	// check if right
-// 	else if (word.checkGuess(guess)) {
-// 		console.log("You got one!");
-		
-// 		// checkWin();
-// 	}
-
-// 	// wrong guess
-// 	else {
-// 		word.pastGuess.push(guess);
-		
-// 		// updateLives();
-
-// 		console.log("You've already used these! <br>" + word.pastGuess);
-// 		console.log("Nope! Try again!");
-		
-// 	}
-
-// }
-
-function setHangman(){
-
-	var theWord = game.getWord();
-	var spaceholder = letter.printWord(theWord);
-	console.log(theWord);
-	console.log(spaceholder);
-
+function hangman(){
+	
 	if (lives > 0){
 		inquirer.prompt([{
 			name: "guess",
 			message: "Go on then, have a guess."
 		}]).then(function(answers) {
-				var guess = answers.guess;
+				var guess = answers.guess.toLowerCase();
+				console.log(guess);
+				word.checkGuess(guess);
+				printStats();
 
-				// setHangman();
+				hangman();
 			});
 	}
 }
 
-
-
-setHangman();
+console.log(theWord);
+printStats();
+hangman();
 
 
 
