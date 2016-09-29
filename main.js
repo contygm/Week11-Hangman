@@ -3,12 +3,9 @@ var game = require("./game.js");
 var letter = require("./letter.js");
 var word = require("./word.js");
 var inquirer = require('inquirer');
-var $ = require('jQuery');
 
 var wins = 0;
 var lives = 7;
-
-
 
 // function hangman(event) {
 // 	var guess = String.fromCharCode(event.keyCode).toLowerCase();
@@ -49,6 +46,11 @@ var lives = 7;
 
 function setHangman(){
 
+	var theWord = game.getWord();
+	var spaceholder = letter.printWord(theWord);
+	console.log(theWord);
+	console.log(spaceholder);
+
 	if (lives > 0){
 		inquirer.prompt([{
 			name: "guess",
@@ -61,9 +63,9 @@ function setHangman(){
 	}
 }
 
-game.getWord();
-letter.printWord();
-// setHangman();
+
+
+setHangman();
 
 
 

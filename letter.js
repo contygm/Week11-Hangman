@@ -3,35 +3,20 @@
 
 var game = require("./game.js");
 
+exports.printWord = function(word){
 
-var spaceHolder = "";
-exports.spaceHolder = spaceHolder;
-
-
-
-exports.printWord = function(){
-	console.log("hello");
-	console.log(spaceHolder);
-	var theWord = game.theWord;
-
-
-	for (var n = 0; n < theWord.length; n++) {
-		console.log("hello2");
-		console.log(spaceHolder);
-
-		if (/[a-zA-Z]/.test(theWord[n])){
-			spaceHolder += "EE";
-			
-			console.log("hello3");
-			console.log(spaceHolder);
+	var spaceHolder = "";
+	
+	for (var n = 0; n < word.length; n++) {
+		
+		if (/[a-zA-Z]/.test(word[n])){
+			spaceHolder += "_ ";
 		} else {
-			spaceHolder += "AA";
-			console.log("hello4");
-			console.log(spaceHolder);
+			spaceHolder += "  ";
 		}
 	}
-	console.log("hello5");
-	console.log(spaceHolder);
+
+	return spaceHolder;
 };
 
 exports.checkSpaceHolder = function(alpha) {

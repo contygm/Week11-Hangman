@@ -30,11 +30,9 @@ var StarWars = [
 	"Hard to see the Dark Side is","Laugh it up fuzz ball"
 ]
 
-var theWord = "";
-
-exports.theWord = theWord;
+var main = require("./main.js");
 
 exports.getWord = function(){
-	theWord = StarWars[Math.floor(Math.random() * 50)];
-	console.log(theWord)
+	var theWord = StarWars[Math.floor(Math.random() * 50)];
+	return theWord;
 };
