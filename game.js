@@ -32,6 +32,8 @@ var StarWars = [
 
 var theWord = "";
 
+exports.theWord = theWord;
+
 exports.getWord = function(){
 	theWord = StarWars[Math.floor(Math.random() * 50)];
 	console.log(theWord)
