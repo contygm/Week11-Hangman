@@ -18,9 +18,19 @@ module.exports = {
 		console.log(this.spaceholder);
 	},
 
-	changeSpaces: function(){
-		this.spaceholder = this.spaceholder.substr(0, n) + game.theWord[n] + this.spaceholder.substr(n+1);
+	changeSpaces: function(x){
+		
+		console.log("4");
+		if (x > 0){
+			console.log("5");
+			var y = x*2;
+			var temp = this.spaceholder.substr(0, y) + game.theWord[x] + this.spaceholder.substr(y+1);
+			this.spaceholder = temp;
+		} else {
+			var temp = this.spaceholder.substr(0, x) + game.theWord[x] + this.spaceholder.substr(x+1);
+			this.spaceholder = temp;
+		}
+		
 	}
-
 
 }

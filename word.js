@@ -14,7 +14,7 @@ module.exports = {
 	checkRepeat: function(alpha){
 		for (var i = 0; i < this.pastGuess.length; i++){
 			if (alpha == this.pastGuess[i]) {
-				return true;
+				return true;	
 			}
 		}
 	},
@@ -29,13 +29,16 @@ module.exports = {
 
 	correctGuess: function(alpha){
 		var correct = 0;
-		for (var n = 0; n < game.theWord.length; n++) {
+		console.log("1");
+		for (var n = 0; n <= game.theWord.length; n++) {			
 			if (alpha == game.theWord[n].toLowerCase()){
-				letter.changeSpaces();
+				// letter.changeSpaces(n);
 				correct++;
+				console.log("2");
 			}
 		};
-		if (correct > 0) {return true};
+		
+		if (correct > 0) {console.log("3"); return correct;};
 	},
 
 	printStats: function(){
@@ -51,9 +54,9 @@ module.exports = {
 			console.log("Select an alpha key.");
 		} 
 
-		else if (this.checkRepeat(alpha) || this.checkSpaces(alpha)){
-			console.log("You guessed that already! Try again.");
-		} 
+		// else if (this.checkRepeat(alpha) || this.checkSpaces(alpha)){
+		// 	console.log("You guessed that already! Try again.");
+		// } 
 
 		else if (this.correctGuess(alpha)) {
 			console.log("You got one!");
@@ -63,7 +66,7 @@ module.exports = {
 			// checkWin();
 		}
 
-		else {
+		else {		
 			this.pastGuess.push(alpha);
 			this.lives--;
 			console.log("Nope! Try again!");

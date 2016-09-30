@@ -16,8 +16,8 @@ function hangman(){
 		message: "Go on then, have a guess."
 	}]).then(function(answers) {
 			var guess = answers.guess.toLowerCase();
-
 			word.checkGuess(guess);
+			// console.log(game.theWord);
 
 			hangman();
 		});
