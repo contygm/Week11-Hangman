@@ -19,12 +19,23 @@ function hangman(){
 			
 			word.checkGuess(guess);
 
-			if (!word.checkScore()){
-				word.playAgain();
+			if (!word.checkScore()){				
+				inquirer.prompt([{
+					name: "replay",
+					type: 'confirm',
+					message: "Would you like to play again?"
+				}]).then(function(answers) {
+					if(answers.replay){
+						setUp();
+						hangman();
+					} else {
+						console.log("Farewell, Brave Warrior.");
+						return false;
+					}
+				});					
 			} else {
 				hangman();
 			}
-			
 		});
 }
 

@@ -4,8 +4,6 @@
 
 var game = require("./game.js");
 var letter = require("./letter.js");
-var main = require("./main.js");
-var inquirer = require('inquirer');
 
 module.exports = {
 	pastGuess: [],
@@ -47,18 +45,6 @@ module.exports = {
 		console.log("");
 	},
 
-// ------------
-	playAgain: function(){
-		inquirer.prompt([{
-			name: "replay",
-			type: 'confirm',
-			message: "Would you like to play again?"
-		}]).then(function(answers) {
-				console.log(answers.replay);
-				console.log("1");
-			});
-	},
-
 	checkScore: function(){
 		if (this.lives <= 0){
 			console.log("You loose!");
@@ -70,7 +56,6 @@ module.exports = {
 			return true;
 		}
 	},
-// -------------
 
 	checkGuess: function(alpha){
 		if (!/[a-z]/.test(alpha)) {
