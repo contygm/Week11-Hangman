@@ -1,5 +1,3 @@
-var main = require("./main.js");
-
 module.exports = {
 	StarWars: [
 	"Han Solo","Chewbacca the Wookiee",

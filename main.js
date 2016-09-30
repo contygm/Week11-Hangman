@@ -6,14 +6,11 @@ var inquirer = require('inquirer');
 var wins = 0;
 var lives = 7;
 var pastGuess = [];
-var spaceholder = "";
-
 
 
 function setUp(){
 	game.getWord();
-	// spaceholder = letter.intialPrint(theWord, spaceholder);
-	// console.log(spaceholder);
+	letter.initialPrint();
 }
 
 
