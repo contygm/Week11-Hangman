@@ -19,10 +19,7 @@ module.exports = {
 	},
 
 	changeSpaces: function(x){
-		
-		console.log("4");
 		if (x > 0){
-			console.log("5");
 			var y = x*2;
 			var temp = this.spaceholder.substr(0, y) + game.theWord[x] + this.spaceholder.substr(y+1);
 			this.spaceholder = temp;

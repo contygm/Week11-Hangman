@@ -20,8 +20,8 @@ module.exports = {
 	},
 
 	checkSpaces: function(alpha){
-		for (var n = 0; n < game.theWord.length; n++) {
-			if (alpha == letter.spaceholder.toLowerCase()){
+		for (var n = 0; n < letter.spaceholder.length; n++) {
+			if (alpha == letter.spaceholder[n].toLowerCase()){
 				return true;
 			}
 		}	
@@ -29,16 +29,13 @@ module.exports = {
 
 	correctGuess: function(alpha){
 		var correct = 0;
-		console.log("1");
 		for (var n = 0; n < game.theWord.length; n++) {			
 			if (alpha == game.theWord[n].toLowerCase()){
 				letter.changeSpaces(n);
 				correct++;
-				console.log("2");
 			}
-		};
-		
-		if (correct > 0) {console.log("3"); return correct;};
+		};		
+		if (correct > 0) {return correct;};
 	},
 
 	printStats: function(){
@@ -54,16 +51,16 @@ module.exports = {
 			console.log("Select an alpha key.");
 		} 
 
-		// else if (this.checkRepeat(alpha) || this.checkSpaces(alpha)){
-		// 	console.log("You guessed that already! Try again.");
-		// } 
+		else if (this.checkRepeat(alpha) || this.checkSpaces(alpha)){
+			console.log("You guessed that already! Try again.");
+		} 
 
 		else if (this.correctGuess(alpha)) {
 			console.log("You got one!");
 			this.printStats();
 			console.log(letter.spaceholder);
 			
-			// checkWin();
+			// checkWin(); probs checkScore instead
 		}
 
 		else {		

@@ -17,7 +17,6 @@ function hangman(){
 	}]).then(function(answers) {
 			var guess = answers.guess.toLowerCase();
 			word.checkGuess(guess);
-			// console.log(game.theWord);
 
 			hangman();
 		});
