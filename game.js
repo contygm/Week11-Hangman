@@ -1,6 +1,7 @@
 var main = require("./main.js");
 
-var StarWars = [
+module.exports = {
+	StarWars: [
 	"Han Solo","Chewbacca the Wookiee",
 	"Obi Wan Kenobi","Jar Jar Binks",
 	"Count Dooku","Jabba the Hutt",
@@ -29,15 +30,16 @@ var StarWars = [
 	"I sense great fear in you Skywalker","You were the chosen one",
 	"Now I am the master","I find your lack of faith disturbing",
 	"A powerful Sith you will become","I am C3PO Human Cyborg Relations",
-	"Hard to see the Dark Side is","Laugh it up fuzz ball"
-]
+	"Hard to see the Dark Side is","Laugh it up fuzz ball" ],
 
-var getWord = function(word){
-	word = StarWars[Math.floor(Math.random() * 50)];
-	return word;
-};
+	theWord: "",
 
-module.exports = getWord();
+	getWord: function(){
+		this.theWord = this.StarWars[Math.floor(Math.random() * 50)];
+		console.log(this.theWord);
+	}
+}
+
 
 
 

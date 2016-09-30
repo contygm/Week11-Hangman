@@ -6,14 +6,14 @@ var inquirer = require('inquirer');
 var wins = 0;
 var lives = 7;
 var pastGuess = [];
-var theWord = "";
 var spaceholder = "";
 
+
+
 function setUp(){
-	theWord = game.getWord(theWord);
-	console.log(theWord);
-	spaceholder = letter.printWord(theWord);
-	console.log(spaceholder);
+	game.getWord();
+	// spaceholder = letter.intialPrint(theWord, spaceholder);
+	// console.log(spaceholder);
 }
 
 
@@ -35,7 +35,9 @@ function setUp(){
 // }
 
 setUp();
-hangman();
+
+
+// hangman();
 
 
 
