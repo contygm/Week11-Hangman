@@ -1,3 +1,5 @@
+var main = require("./main.js");
+
 var StarWars = [
 	"Han Solo","Chewbacca the Wookiee",
 	"Obi Wan Kenobi","Jar Jar Binks",
@@ -30,9 +32,23 @@ var StarWars = [
 	"Hard to see the Dark Side is","Laugh it up fuzz ball"
 ]
 
-var main = require("./main.js");
-
-exports.getWord = function(){
-	var theWord = StarWars[Math.floor(Math.random() * 50)];
-	return theWord;
+var getWord = function(word){
+	word = StarWars[Math.floor(Math.random() * 50)];
+	return word;
 };
+
+module.exports = getWord();
+
+
+
+
+
+
+
+
+
+
+
+
+
+

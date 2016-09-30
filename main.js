@@ -1,4 +1,3 @@
-var fs = require('fs');
 var game = require("./game.js");
 var letter = require("./letter.js");
 var word = require("./word.js");
@@ -7,45 +6,35 @@ var inquirer = require('inquirer');
 var wins = 0;
 var lives = 7;
 var pastGuess = [];
-var theWord = game.getWord();
-var spaceholder = letter.printWord(theWord);
+var theWord = "";
+var spaceholder = "";
 
-exports.pastGuess = pastGuess;
-exports.theWord = theWord;
-exports.spaceholder = spaceholder;
-exports.lives = lives;
-
-function printStats(){
-	
-	console.log("");
-	console.log("STATS")
-	console.log("Lives: " + lives);
-	console.log("Past Guesses: " + pastGuess)
-	console.log("--------------")
-	console.log(spaceholder)
-	console.log("");
+function setUp(){
+	theWord = game.getWord(theWord);
+	console.log(theWord);
+	spaceholder = letter.printWord(theWord);
+	console.log(spaceholder);
 }
 
 
-function hangman(){
+// function hangman(){
 	
-	if (lives > 0){
-		inquirer.prompt([{
-			name: "guess",
-			message: "Go on then, have a guess."
-		}]).then(function(answers) {
-				var guess = answers.guess.toLowerCase();
-				console.log(guess);
-				word.checkGuess(guess);
-				printStats();
+// 	if (lives > 0){
+// 		inquirer.prompt([{
+// 			name: "guess",
+// 			message: "Go on then, have a guess."
+// 		}]).then(function(answers) {
+// 				var guess = answers.guess.toLowerCase();
+// 				word.checkGuess(guess);
 
-				hangman();
-			});
-	}
-}
+// 				hangman();
+// 			});
+// 	} else {
+// 		console.log("You lose.");
+// 	}
+// }
 
-console.log(theWord);
-printStats();
+setUp();
 hangman();
 
 

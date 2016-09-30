@@ -67,17 +67,7 @@ function resetWord (){
 	document.getElementById("pastGuess").innerHTML= "You've already used these! <br>" + pastGuess;
 };
 
-function checkGuess(letter) {
-	var correct = 0;
-	for (var n = 0; n < theWord.length; n++) {
-		if (letter == theWord[n].toUpperCase()){
-			spaceHolder = spaceHolder.substr(0, n) + theWord[n] + spaceHolder.substr(n+1);
-			correct++;
-		}
-	}
-	document.getElementById("word").innerHTML= spaceHolder;
-	if (correct > 0) {return true};
-};
+
 
 function checkSpaceHolder (letter) {
 	for (var n = 0; n < theWord.length; n++) {
