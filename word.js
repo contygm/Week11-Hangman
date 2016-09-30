@@ -30,9 +30,9 @@ module.exports = {
 	correctGuess: function(alpha){
 		var correct = 0;
 		console.log("1");
-		for (var n = 0; n <= game.theWord.length; n++) {			
+		for (var n = 0; n < game.theWord.length; n++) {			
 			if (alpha == game.theWord[n].toLowerCase()){
-				// letter.changeSpaces(n);
+				letter.changeSpaces(n);
 				correct++;
 				console.log("2");
 			}

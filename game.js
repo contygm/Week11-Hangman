@@ -27,7 +27,7 @@ module.exports = {
 	"Fear is the path to the dark side","Be mindful of your thoughts",
 	"I sense great fear in you Skywalker","You were the chosen one",
 	"Now I am the master","I find your lack of faith disturbing",
-	"A powerful Sith you will become","I am C3PO Human Cyborg Relations",
+	"A powerful Sith you will become","When 900 years old, you reach, Look as good, you will not",
 	"Hard to see the Dark Side is","Laugh it up fuzz ball" ],
 
 	theWord: "",
