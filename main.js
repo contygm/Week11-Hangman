@@ -1,13 +1,7 @@
-var game = require("./game.js");
-var letter = require("./letter.js");
+
 var word = require("./word.js");
 var inquirer = require('inquirer');
 
-function setUp(){
-	game.getWord();
-	word.printStats();
-	letter.initialPrint();
-}
 
 function hangman(){
 	
@@ -26,7 +20,7 @@ function hangman(){
 					message: "Would you like to play again?"
 				}]).then(function(answers) {
 					if(answers.replay){
-						setUp();
+						word.reSetUp();
 						hangman();
 					} else {
 						console.log("Farewell, Brave Warrior.");
@@ -39,7 +33,7 @@ function hangman(){
 		});
 }
 
-setUp();
+word.setUp();
 hangman();
 
 

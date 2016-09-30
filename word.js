@@ -8,7 +8,21 @@ var letter = require("./letter.js");
 module.exports = {
 	pastGuess: [],
 
-	lives: 1,
+	lives: 7,
+
+	setUp: function(){
+		game.getWord();
+		this.printStats();
+		letter.initialPrint();
+	},
+
+	reSetUp: function(){
+		this.lives = 7;
+		this.pastGuess = [];
+		game.getWord();
+		this.printStats();
+		letter.initialPrint();
+	},
 
 	checkRepeat: function(alpha){
 		for (var i = 0; i < this.pastGuess.length; i++){
@@ -70,8 +84,7 @@ module.exports = {
 			
 			console.log("You got one!");
 			this.printStats();
-			console.log(letter.spaceholder);
-			
+			console.log(letter.spaceholder);	
 		}
 
 		else {		
@@ -81,8 +94,6 @@ module.exports = {
 			console.log("Nope! Try again!");
 			this.printStats();
 			console.log(letter.spaceholder);
-
-
 		}
 
 	}

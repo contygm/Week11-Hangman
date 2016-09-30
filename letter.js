@@ -7,6 +7,7 @@ module.exports = {
 	spaceholder: "",
 
 	initialPrint: function(){
+		this.spaceholder = "";
 		for (var n = 0; n < game.theWord.length; n++) {
 			
 			if (/[a-zA-Z]/.test(game.theWord[n])){
