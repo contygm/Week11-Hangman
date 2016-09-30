@@ -18,4 +18,9 @@ module.exports = {
 		console.log(this.spaceholder);
 	},
 
+	changeSpaces: function(){
+		this.spaceholder = this.spaceholder.substr(0, n) + game.theWord[n] + this.spaceholder.substr(n+1);
+	}
+
+
 }
