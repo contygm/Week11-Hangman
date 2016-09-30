@@ -46,6 +46,16 @@ module.exports = {
 		console.log("");
 	},
 
+// ------------
+	playAgain: function(){
+
+	},
+
+	checkScore: function(){
+
+	},
+// -------------
+
 	checkGuess: function(alpha){
 		if (!/[a-z]/.test(alpha)) {
 			console.log("Select an alpha key.");
@@ -59,7 +69,8 @@ module.exports = {
 			console.log("You got one!");
 			this.printStats();
 			console.log(letter.spaceholder);
-			
+
+// ------------------- 
 			// checkWin(); probs checkScore instead
 		}
 
