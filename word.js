@@ -10,7 +10,7 @@ var inquirer = require('inquirer');
 module.exports = {
 	pastGuess: [],
 
-	lives: 7,
+	lives: 1,
 
 	checkRepeat: function(alpha){
 		for (var i = 0; i < this.pastGuess.length; i++){
@@ -54,17 +54,20 @@ module.exports = {
 			type: 'confirm',
 			message: "Would you like to play again?"
 		}]).then(function(answers) {
-				console.log(answer.replay);
+				console.log(answers.replay);
+				console.log("1");
 			});
 	},
 
 	checkScore: function(){
-		if (this.lives < 0){
+		if (this.lives <= 0){
 			console.log("You loose!");
-			// playAgain()
-		} else if (!spaceHolder.includes("_")){
+			return false;
+		} else if (!letter.spaceholder.includes("_")){
 			console.log("You win!");
-			// playAgain();
+			return false;
+		} else {
+			return true;
 		}
 	},
 // -------------
@@ -79,23 +82,21 @@ module.exports = {
 		} 
 
 		else if (this.correctGuess(alpha)) {
-			// this.checkScore();
-
-
-			this.playAgain();
-			// console.log("You got one!");
-			// this.printStats();
-			// console.log(letter.spaceholder);
+			
+			console.log("You got one!");
+			this.printStats();
+			console.log(letter.spaceholder);
 			
 		}
 
 		else {		
-			this.checkScore();
+
 			this.pastGuess.push(alpha);
 			this.lives--;
 			console.log("Nope! Try again!");
 			this.printStats();
 			console.log(letter.spaceholder);
+
 
 		}
 

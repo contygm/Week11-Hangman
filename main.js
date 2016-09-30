@@ -19,7 +19,12 @@ function hangman(){
 			
 			word.checkGuess(guess);
 
-			// hangman();
+			if (!word.checkScore()){
+				word.playAgain();
+			} else {
+				hangman();
+			}
+			
 		});
 }
 
