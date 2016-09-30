@@ -5,6 +5,7 @@
 var game = require("./game.js");
 var letter = require("./letter.js");
 var main = require("./main.js");
+var inquirer = require('inquirer');
 
 module.exports = {
 	pastGuess: [],
@@ -48,11 +49,23 @@ module.exports = {
 
 // ------------
 	playAgain: function(){
-
+		inquirer.prompt([{
+			name: "replay",
+			type: 'confirm',
+			message: "Would you like to play again?"
+		}]).then(function(answers) {
+				console.log(answer.replay);
+			});
 	},
 
 	checkScore: function(){
-
+		if (this.lives < 0){
+			console.log("You loose!");
+			// playAgain()
+		} else if (!spaceHolder.includes("_")){
+			console.log("You win!");
+			// playAgain();
+		}
 	},
 // -------------
 
@@ -66,15 +79,18 @@ module.exports = {
 		} 
 
 		else if (this.correctGuess(alpha)) {
-			console.log("You got one!");
-			this.printStats();
-			console.log(letter.spaceholder);
+			// this.checkScore();
 
-// ------------------- 
-			// checkWin(); probs checkScore instead
+
+			this.playAgain();
+			// console.log("You got one!");
+			// this.printStats();
+			// console.log(letter.spaceholder);
+			
 		}
 
 		else {		
+			this.checkScore();
 			this.pastGuess.push(alpha);
 			this.lives--;
 			console.log("Nope! Try again!");
