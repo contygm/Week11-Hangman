@@ -30,15 +30,12 @@ var Word = function(word){
 		}	
 	},
 
-	this.correctGuess = function(alpha){
-		var correct = 0;
+	this.wrongGuess = function(alpha){
 		for (var n = 0; n < this.theWord.length; n++) {			
 			if (alpha == this.theWord[n].toLowerCase()){
-				letter.changeSpaces(n);
-				correct++;
+				return false;
 			}
 		};		
-		if (correct > 0) {return correct;};
 	},
 
 	this.printStats = function(){
@@ -64,24 +61,26 @@ var Word = function(word){
 	this.checkGuess = function(alpha, spaces){
 		if (!/[a-z]/.test(alpha)) {
 			console.log("Select an alpha key.");
+			return false;
 		} 
 
 		else if (this.checkRepeat(alpha, spaces)){
 			console.log("You guessed that already! Try again.");
+			return false;
 		} 
 
-		else if (this.correctGuess(alpha)) {
-			
-			console.log("You got one!");
-			this.printStats();	
-		}
-
-		else {		
-
+		else if (this.wrongGuess(alpha)) {			
 			this.pastGuess.push(alpha);
 			this.lives--;
 			console.log("Nope! Try again!");
 			this.printStats();
+			console.log(spaces);
+		}
+
+		else {		
+			console.log("You got one!");
+			this.printStats();			
+			return true;
 		}
 
 	}

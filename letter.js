@@ -34,6 +34,17 @@ var Letter = function(word) {
 		
 	}
 
+	this.correctGuess = function(){
+		var correct = 0;
+		for (var n = 0; n < this.theWord.length; n++) {			
+			if (alpha == this.theWord[n].toLowerCase()){
+				this.changeSpaces(n);
+				correct++;
+			}
+		};		
+		if (correct > 0) {return correct;};
+	}
+
 }
 
 module.exports = Letter;

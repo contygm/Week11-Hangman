@@ -13,7 +13,9 @@ function hangman(){
 			var guess = answers.guess.toLowerCase();
 			
 			// check guess
-			newGame.checkGuess(guess, letter.spaceholder);
+			if(newGame.checkGuess(guess, letter.spaceholder)){
+				letter.correctGuess();
+			};
 
 			// win or loose, do you want to play again?
 			if (!newGame.checkScore(letter.spaceholder)){				
