@@ -5,18 +5,16 @@
 var game = require("./game.js");
 var letter = require("./letter.js");
 
-module.exports = {
-	pastGuess: [],
+var Word = function(alpha){
+	this.pastGuess = [],
+	this.lives = 7,
 
-	lives: 7,
-
-	setUp: function(){
+	this.setUp = function(){
 		game.getWord();
 		this.printStats();
 		letter.initialPrint();
-	},
-
-	reSetUp: function(){
+	}
+	this.reSetUp = function(){
 		this.lives = 7;
 		this.pastGuess = [];
 		game.getWord();
@@ -24,7 +22,7 @@ module.exports = {
 		letter.initialPrint();
 	},
 
-	checkRepeat: function(alpha){
+	this.checkRepeat = function(){
 		for (var i = 0; i < this.pastGuess.length; i++){
 			if (alpha == this.pastGuess[i]) {
 				return true;	
@@ -32,7 +30,7 @@ module.exports = {
 		}
 	},
 
-	checkSpaces: function(alpha){
+	this.checkSpaces = function(){
 		for (var n = 0; n < letter.spaceholder.length; n++) {
 			if (alpha == letter.spaceholder[n].toLowerCase()){
 				return true;
@@ -40,7 +38,7 @@ module.exports = {
 		}	
 	},
 
-	correctGuess: function(alpha){
+	this.correctGuess = function(){
 		var correct = 0;
 		for (var n = 0; n < game.theWord.length; n++) {			
 			if (alpha == game.theWord[n].toLowerCase()){
@@ -51,7 +49,7 @@ module.exports = {
 		if (correct > 0) {return correct;};
 	},
 
-	printStats: function(){
+	this.printStats = function(){
 		console.log("");
 		console.log("STATS")
 		console.log("Lives: " + this.lives);
@@ -59,7 +57,7 @@ module.exports = {
 		console.log("");
 	},
 
-	checkScore: function(){
+	this.checkScore = function(){
 		if (this.lives <= 0){
 			console.log("You loose!");
 			return false;
@@ -71,7 +69,7 @@ module.exports = {
 		}
 	},
 
-	checkGuess: function(alpha){
+	this.checkGuess = function(){
 		if (!/[a-z]/.test(alpha)) {
 			console.log("Select an alpha key.");
 		} 
@@ -99,3 +97,4 @@ module.exports = {
 	}
 }
 
+module.exports = Word;

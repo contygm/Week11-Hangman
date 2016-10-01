@@ -2,7 +2,6 @@
 var word = require("./word.js");
 var inquirer = require('inquirer');
 
-
 function hangman(){
 	
 	inquirer.prompt([{
@@ -38,7 +37,7 @@ function hangman(){
 }
 
 // play game
-word.setUp();
+setUp();
 hangman();
 
 
