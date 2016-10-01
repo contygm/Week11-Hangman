@@ -31,11 +31,18 @@ var Word = function(word){
 	},
 
 	this.wrongGuess = function(alpha){
+		var correct = 0;
 		for (var n = 0; n < this.theWord.length; n++) {			
 			if (alpha == this.theWord[n].toLowerCase()){
-				return false;
+				correct++;
 			}
-		};		
+		};
+
+		if (correct > 0){
+			return false;
+		} else {
+			return true;
+		}
 	},
 
 	this.printStats = function(){
