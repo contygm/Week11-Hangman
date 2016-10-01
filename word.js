@@ -69,23 +69,20 @@ var Word = function(word){
 		if (!/[a-z]/.test(alpha)) {
 			console.log("Select an alpha key.");
 			return false;
-		} 
-
-		else if (this.checkRepeat(alpha, spaces)){
+		
+		} else if (this.checkRepeat(alpha, spaces)){
 			console.log("You guessed that already! Try again.");
 			return false;
-		} 
-
-		else if (this.wrongGuess(alpha)) {			
+		
+		} else if (this.wrongGuess(alpha)) {			
 			this.pastGuess.push(alpha);
 			this.lives--;
 			console.log("Nope! Try again!");
 			this.printStats();
 			console.log(spaces);
 			return false;
-		}
-
-		else {		
+		
+		} else {		
 			console.log("You got one!");
 			this.printStats();			
 			return true;
