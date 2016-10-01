@@ -11,8 +11,10 @@ function hangman(){
 	}]).then(function(answers) {
 			var guess = answers.guess.toLowerCase();
 			
+			// check guess
 			word.checkGuess(guess);
 
+			// win or loose, do you want to play again?
 			if (!word.checkScore()){				
 				inquirer.prompt([{
 					name: "replay",
@@ -27,12 +29,15 @@ function hangman(){
 						return false;
 					}
 				});					
+			
+			// keep going; haven't won or lost
 			} else {
 				hangman();
 			}
 		});
 }
 
+// play game
 word.setUp();
 hangman();
 
