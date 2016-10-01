@@ -7,11 +7,11 @@ var Letter = function(word) {
 	this.theWord = word;
 	this.spaceholder = "",
 
-	this.initialPrint = function(){
+	this.initialPrint = function(daWord){
 		this.spaceholder = "";
-		for (var n = 0; n < this.theWord.length; n++) {
+		for (var n = 0; n < daWord.length; n++) {
 			
-			if (/[a-zA-Z]/.test(this.theWord[n])){
+			if (/[a-zA-Z]/.test(daWord[n])){
 				this.spaceholder += "_ ";
 			} else {
 				this.spaceholder += "  ";
@@ -33,10 +33,10 @@ var Letter = function(word) {
 		
 	}
 
-	this.correctGuess = function(){
+	this.correctGuess = function(alpha, daWord){
 		var correct = 0;
-		for (var n = 0; n < this.theWord.length; n++) {			
-			if (alpha == this.theWord[n].toLowerCase()){
+		for (var n = 0; n < daWord.length; n++) {			
+			if (alpha == daWord[n].toLowerCase()){
 				this.changeSpaces(n);
 				correct++;
 			}

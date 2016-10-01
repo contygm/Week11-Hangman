@@ -14,7 +14,7 @@ function hangman(){
 			
 			// check guess
 			if(newGame.checkGuess(guess, letter.spaceholder)){
-				letter.correctGuess();
+				letter.correctGuess(guess, newGame.theWord);
 			};
 
 			// win or loose, do you want to play again?
@@ -26,7 +26,7 @@ function hangman(){
 				}]).then(function(answers) {
 					if(answers.replay){
 						newGame.reSetUp();
-						letter.initialPrint();
+						letter.initialPrint(newGame.theWord);
 						hangman();
 					} else {
 						console.log("Farewell, Brave Warrior.");
@@ -47,7 +47,7 @@ var newGame = new Word(game.getWord());
 var letter = new Letter(newGame.theWord);
 
 newGame.printStats();
-letter.initialPrint();
+letter.initialPrint(newGame.theWord);
 hangman();
 
 

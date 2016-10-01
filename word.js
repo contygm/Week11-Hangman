@@ -85,11 +85,11 @@ var Word = function(word){
 			return false;
 		}
 
-		// else {		
-		// 	console.log("You got one!");
-		// 	this.printStats();			
-		// 	return true;
-		// }
+		else {		
+			console.log("You got one!");
+			this.printStats();			
+			return true;
+		}
 
 	}
 }
