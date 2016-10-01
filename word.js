@@ -5,19 +5,19 @@
 var game = require("./game.js");
 var letter = require("./letter.js");
 
-var Word = function(alpha){
+var Word = function(word){
+	this.theWord = word;
 	this.pastGuess = [],
 	this.lives = 7,
 
 	this.setUp = function(){
-		game.getWord();
 		this.printStats();
 		letter.initialPrint();
 	}
 	this.reSetUp = function(){
 		this.lives = 7;
 		this.pastGuess = [];
-		game.getWord();
+		this.theWord = game.getWord();
 		this.printStats();
 		letter.initialPrint();
 	},
@@ -40,8 +40,8 @@ var Word = function(alpha){
 
 	this.correctGuess = function(){
 		var correct = 0;
-		for (var n = 0; n < game.theWord.length; n++) {			
-			if (alpha == game.theWord[n].toLowerCase()){
+		for (var n = 0; n < this.theWord.length; n++) {			
+			if (alpha == this.theWord[n].toLowerCase()){
 				letter.changeSpaces(n);
 				correct++;
 			}

@@ -1,5 +1,6 @@
 
 var word = require("./word.js");
+var game = require("./game.js");
 var inquirer = require('inquirer');
 
 function hangman(){
@@ -11,17 +12,17 @@ function hangman(){
 			var guess = answers.guess.toLowerCase();
 			
 			// check guess
-			word.checkGuess(guess);
+			newGame.checkGuess(guess);
 
 			// win or loose, do you want to play again?
-			if (!word.checkScore()){				
+			if (!newGame.checkScore()){				
 				inquirer.prompt([{
 					name: "replay",
 					type: 'confirm',
 					message: "Would you like to play again?"
 				}]).then(function(answers) {
 					if(answers.replay){
-						word.reSetUp();
+						newGame.reSetUp();
 						hangman();
 					} else {
 						console.log("Farewell, Brave Warrior.");
@@ -37,7 +38,9 @@ function hangman(){
 }
 
 // play game
-setUp();
+
+var newGame = new Word(game.getWord())
+newGame.setUp();
 hangman();
 
 
