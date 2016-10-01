@@ -3,10 +3,10 @@
 
 var game = require("./game.js");
 
-module.exports = {
-	spaceholder: "",
+var Letter = function(x) {
+	this.spaceholder = "",
 
-	initialPrint: function(){
+	this.initialPrint = function(){
 		this.spaceholder = "";
 		for (var n = 0; n < game.theWord.length; n++) {
 			
@@ -19,7 +19,7 @@ module.exports = {
 		console.log(this.spaceholder);
 	},
 
-	changeSpaces: function(x){
+	this.changeSpaces = function(x){
 		if (x > 0){
 			var y = x*2;
 			var temp = this.spaceholder.substr(0, y) + game.theWord[x] + this.spaceholder.substr(y+1);
@@ -32,3 +32,5 @@ module.exports = {
 	}
 
 }
+
+module.exports = Letter;
