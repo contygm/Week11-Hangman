@@ -75,13 +75,14 @@ var Word = function(word){
 			console.log("Nope! Try again!");
 			this.printStats();
 			console.log(spaces);
+			return false;
 		}
 
-		else {		
-			console.log("You got one!");
-			this.printStats();			
-			return true;
-		}
+		// else {		
+		// 	console.log("You got one!");
+		// 	this.printStats();			
+		// 	return true;
+		// }
 
 	}
 }

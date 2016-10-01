@@ -9,7 +9,6 @@ var Letter = function(word) {
 
 	this.initialPrint = function(){
 		this.spaceholder = "";
-		console.log(this.theWord);
 		for (var n = 0; n < this.theWord.length; n++) {
 			
 			if (/[a-zA-Z]/.test(this.theWord[n])){
@@ -42,7 +41,9 @@ var Letter = function(word) {
 				correct++;
 			}
 		};		
-		if (correct > 0) {return correct;};
+		if (correct > 0) {
+			console.log(this.spaceholder);
+		};
 	}
 
 }
