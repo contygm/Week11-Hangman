@@ -3,42 +3,34 @@
 
 
 var game = require("./game.js");
-var letter = require("./letter.js");
 
 var Word = function(word){
 	this.theWord = word;
 	this.pastGuess = [],
 	this.lives = 7,
 
-	this.setUp = function(){
-		this.printStats();
-		letter.initialPrint();
-	}
 	this.reSetUp = function(){
 		this.lives = 7;
 		this.pastGuess = [];
 		this.theWord = game.getWord();
 		this.printStats();
-		letter.initialPrint();
 	},
 
-	this.checkRepeat = function(){
+	this.checkRepeat = function(alpha, spaces){
+		for (var n = 0; n < spaces.length; n++) {
+			if (alpha == spaces[n].toLowerCase()){
+				return true;
+			}
+		}
+
 		for (var i = 0; i < this.pastGuess.length; i++){
 			if (alpha == this.pastGuess[i]) {
 				return true;	
 			}
-		}
-	},
-
-	this.checkSpaces = function(){
-		for (var n = 0; n < letter.spaceholder.length; n++) {
-			if (alpha == letter.spaceholder[n].toLowerCase()){
-				return true;
-			}
 		}	
 	},
 
-	this.correctGuess = function(){
+	this.correctGuess = function(alpha){
 		var correct = 0;
 		for (var n = 0; n < this.theWord.length; n++) {			
 			if (alpha == this.theWord[n].toLowerCase()){
@@ -57,11 +49,11 @@ var Word = function(word){
 		console.log("");
 	},
 
-	this.checkScore = function(){
+	this.checkScore = function(spaces){
 		if (this.lives <= 0){
 			console.log("You loose!");
 			return false;
-		} else if (!letter.spaceholder.includes("_")){
+		} else if (!spaces.includes("_")){
 			console.log("You win!");
 			return false;
 		} else {
@@ -69,20 +61,19 @@ var Word = function(word){
 		}
 	},
 
-	this.checkGuess = function(){
+	this.checkGuess = function(alpha, spaces){
 		if (!/[a-z]/.test(alpha)) {
 			console.log("Select an alpha key.");
 		} 
 
-		else if (this.checkRepeat(alpha) || this.checkSpaces(alpha)){
+		else if (this.checkRepeat(alpha, spaces)){
 			console.log("You guessed that already! Try again.");
 		} 
 
 		else if (this.correctGuess(alpha)) {
 			
 			console.log("You got one!");
-			this.printStats();
-			console.log(letter.spaceholder);	
+			this.printStats();	
 		}
 
 		else {		
@@ -91,7 +82,6 @@ var Word = function(word){
 			this.lives--;
 			console.log("Nope! Try again!");
 			this.printStats();
-			console.log(letter.spaceholder);
 		}
 
 	}

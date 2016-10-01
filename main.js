@@ -1,6 +1,7 @@
 
-var word = require("./word.js");
+var Word = require("./word.js");
 var game = require("./game.js");
+var Letter = require("./letter.js");
 var inquirer = require('inquirer');
 
 function hangman(){
@@ -12,10 +13,10 @@ function hangman(){
 			var guess = answers.guess.toLowerCase();
 			
 			// check guess
-			newGame.checkGuess(guess);
+			newGame.checkGuess(guess, letter.spaceholder);
 
 			// win or loose, do you want to play again?
-			if (!newGame.checkScore()){				
+			if (!newGame.checkScore(letter.spaceholder)){				
 				inquirer.prompt([{
 					name: "replay",
 					type: 'confirm',
@@ -23,6 +24,7 @@ function hangman(){
 				}]).then(function(answers) {
 					if(answers.replay){
 						newGame.reSetUp();
+						letter.initialPrint();
 						hangman();
 					} else {
 						console.log("Farewell, Brave Warrior.");
@@ -39,8 +41,11 @@ function hangman(){
 
 // play game
 
-var newGame = new Word(game.getWord())
-newGame.setUp();
+var newGame = new Word(game.getWord());
+var letter = new Letter(newGame.theWord);
+
+newGame.printStats();
+letter.initialPrint();
 hangman();
 
 

@@ -34,6 +34,7 @@ module.exports = {
 
 	getWord: function(){
 		this.theWord = this.StarWars[Math.floor(Math.random() * 50)];
+		console.log(this.theWord);
 		return this.theWord;
 	}
 }

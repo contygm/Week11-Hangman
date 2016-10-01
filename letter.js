@@ -3,14 +3,16 @@
 
 var game = require("./game.js");
 
-var Letter = function(x) {
+var Letter = function(word) {
+	this.theWord = word;
 	this.spaceholder = "",
 
 	this.initialPrint = function(){
 		this.spaceholder = "";
-		for (var n = 0; n < game.theWord.length; n++) {
+		console.log(this.theWord);
+		for (var n = 0; n < this.theWord.length; n++) {
 			
-			if (/[a-zA-Z]/.test(game.theWord[n])){
+			if (/[a-zA-Z]/.test(this.theWord[n])){
 				this.spaceholder += "_ ";
 			} else {
 				this.spaceholder += "  ";
@@ -19,6 +21,7 @@ var Letter = function(x) {
 		console.log(this.spaceholder);
 	},
 
+	
 	this.changeSpaces = function(x){
 		if (x > 0){
 			var y = x*2;
